@@ -54,7 +54,7 @@ The segfault is caused by the fact that we overwrite the `saved rip` with 'A's, 
 
 ## Exploit application
 
-### Computing the offset
+### Computing the offset and finding the addresses
 
 The first thing that we need is actually the offset, the padding needed to overwrite the saved rip. There is two ways to do it : a brute-forcy kinda way :
 
@@ -121,6 +121,8 @@ Stack level 0, frame at 0x7fffffffe220:
 ```
 
 So we have the buffer at the address `0x7fffffffe1c0` and the saved rip at `0x7fffffffe210`. We have `0x7fffffffe218 - 0x7fffffffe1c0 = 0x58 = 88`.
+
+### Building the payload
 
 Nice ! Now we just have to build the payload. We can do it easily with a small Python script, using the `pwn` library to build the shellcode &al.
 
